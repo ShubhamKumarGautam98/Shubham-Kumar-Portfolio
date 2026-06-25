@@ -108,6 +108,41 @@ const CardTitle = styled.h1`
   }
 `;
 
+const DownloadBtn = styled.a`
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: ${({ theme }) => theme.colors.accent};
+  color: #ffffff;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 20;
+  box-shadow: 0 4px 20px ${({ theme }) => theme.colors.accentGlow};
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px ${({ theme }) => theme.colors.accentGlow};
+    background: ${({ theme }) => theme.colors.accentDark};
+  }
+
+  @media (max-width: 768px) {
+    bottom: 1.5rem;
+    left: 1.5rem;
+    font-size: 0.75rem;
+    padding: 0.6rem 1.2rem;
+  }
+`;
+
 const CardDesc = styled.p`
   color: ${({ theme }) => theme.colors.textSecondary};
   font-size: 0.875rem;
@@ -586,7 +621,7 @@ export default function About() {
       <CanvasContainer ref={mountRef}></CanvasContainer>
       <UILayer>
         <HeaderBox>
-          <Badge>CV Interactif</Badge>
+          <Badge>Interactive CV</Badge>
 
           <InfoContent className={isFading ? 'fade-out' : ''}>
             <TitleRow>
@@ -598,6 +633,11 @@ export default function About() {
             </CardDesc>
           </InfoContent>
         </HeaderBox>
+
+        {/* Download CV button */}
+        <DownloadBtn href="/resume.pdf" download>
+          📄 Download CV
+        </DownloadBtn>
       </UILayer>
     </AboutSection>
   );
